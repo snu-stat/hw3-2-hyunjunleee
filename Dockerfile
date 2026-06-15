@@ -16,15 +16,39 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh
 
-# 4. Conda 경로 설정 및 환경 생성
-ENV PATH=$CONDA_DIR/bin:$PATH
-RUN conda create -n r-reticulate python=3.10 -y
 
-RUN /opt/conda/envs/r-reticulate/bin/pip install --quiet \
-    numpy pandas polars \
-    statsmodels patsy \
-    matplotlib plotnine scipy \
-    pylahman session-info
+
+ENV PATH=${CONDA_DIR}/bin:${PATH}
+
+RUN conda create -n r-reticulate -y -c conda-forge --override-channels \
+    python=3.10 \
+    pip
+
+RUN conda install -n r-reticulate -y -c conda-forge --override-channels \
+    numpy \
+    pandas \
+    polars \
+    statsmodels \
+    patsy \
+    matplotlib \
+    plotnine \
+    scipy
+
+RUN conda run -n r-reticulate python -m pip install \
+    pylahman \
+    session-info
+
+RUN conda clean -afy    
+
+# 4. Conda 경로 설정 및 환경 생성
+# ENV PATH=$CONDA_DIR/bin:$PATH
+# RUN conda create -n r-reticulate python=3.10 -y
+
+# RUN /opt/conda/envs/r-reticulate/bin/pip install --quiet \
+#     numpy pandas polars \
+#     statsmodels patsy \
+#     matplotlib plotnine scipy \
+#     pylahman session-info
 
 # 4. Conda 경로 설정 및 환경 생성
 # ENV PATH=$CONDA_DIR/bin:$PATH
