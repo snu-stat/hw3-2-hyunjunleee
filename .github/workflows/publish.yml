@@ -66,7 +66,9 @@ jobs:
 
       - name: Render Quarto
         run: |
-          export RETICULATE_PYTHON=$(conda info --base)/envs/r-reticulate/bin/python
+          export CONDA_ENV=$(conda info --base)/envs/r-reticulate
+          export RETICULATE_PYTHON=$CONDA_ENV/bin/python
+          export LD_PRELOAD=$CONDA_ENV/lib/libexpat.so.1
           export MPLBACKEND=Agg
           quarto render
         shell: bash -l {0}
