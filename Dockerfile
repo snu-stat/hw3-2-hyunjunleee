@@ -27,13 +27,13 @@ RUN conda create -n r-reticulate python=3.10 -y && \
 # 추가로 필요한 패키지 설치
 
 # 5. R 패키지 설치 (reticulate 및 필수 패키지)
-RUN# 5. R 패키지 설치 (reticulate, IRkernel + 코드에서 쓰는 데이터 패키지)
 RUN R -e "install.packages(c('reticulate', 'remotes', 'IRkernel', 'NHANES', 'Lahman'))" && \
     R -e "IRkernel::installspec(user = FALSE)"
 # 추가로 필요한 패키지 설치
 
 # 6. reticulate가 사용할 Python 경로 고정 (환경 변수)
 ENV RETICULATE_PYTHON=/opt/conda/envs/r-reticulate/bin/python
+ENV MPLBACKEND=Agg
 
 # 7. Binder용 jovyan 유저 생성
 ENV NB_USER=jovyan
