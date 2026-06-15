@@ -4344,7 +4344,7 @@ statsmodels         0.14.6
 Python 3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 17:07:43) [GCC 14.3.0]
 Linux-6.17.0-1018-azure-x86_64-with-glibc2.39
 -----
-Session information updated at 2026-06-15 11:44</code></pre>
+Session information updated at 2026-06-15 12:13</code></pre>
 </div>
 </div>
 </div>
@@ -4648,7 +4648,7 @@ Model Family:                Binomial   Df Model:                           35
 Link Function:                  Logit   Scale:                          1.0000
 Method:                          IRLS   Log-Likelihood:                -1737.0
 Date:                Mon, 15 Jun 2026   Deviance:                       3473.9
-Time:                        11:44:14   Pearson chi2:                 4.27e+03
+Time:                        12:13:32   Pearson chi2:                 4.27e+03
 No. Iterations:                     7   Pseudo R-squ. (CS):             0.2304
 Covariance Type:            nonrobust                                         
 =================================================================================================
@@ -5331,7 +5331,7 @@ Number of Fisher Scoring iterations: 3</code></pre>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">Time:</th>
-<td>11:44:26</td>
+<td>12:13:43</td>
 <th data-quarto-table-cell-role="th">Pearson chi2:</th>
 <td>95.9</td>
 </tr>
@@ -5704,7 +5704,7 @@ Number of Fisher Scoring iterations: 3</code></pre>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">Time:</th>
-<td>11:44:26</td>
+<td>12:13:43</td>
 <th data-quarto-table-cell-role="th">Pearson chi2:</th>
 <td>55.6</td>
 </tr>
@@ -6322,7 +6322,7 @@ Number of Fisher Scoring iterations: 3</code></pre>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">Time:</th>
-<td>11:44:27</td>
+<td>12:13:45</td>
 <th data-quarto-table-cell-role="th">Pearson chi2:</th>
 <td>315.</td>
 </tr>
@@ -6440,6 +6440,7 @@ Number of Fisher Scoring iterations: 3</code></pre>
 </div>
 <section id="답안-5" class="level3">
 <h3 class="anchored" data-anchor-id="답안-5">답안</h3>
+<p>완료. 이때 ENV PATH=/opt/conda/envs/r-reticulate/bin:<span class="math inline">\({CONDA_DIR}/bin:\)</span>{PATH} 를 넣고, ENV MPLBACKEND=Agg 를 넣으며, r 설치의 cran 설정을 추가하였다.</p>
 </section>
 </section>
 <section id="문제-3-2.-github-actions-워크플로우-수정" class="level2">
@@ -6464,6 +6465,16 @@ Number of Fisher Scoring iterations: 3</code></pre>
 </div>
 <section id="답안-6" class="level3">
 <h3 class="anchored" data-anchor-id="답안-6">답안</h3>
+<p>완료. 단 이때 render quarto단계를 다음과 같이 수정함</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>          export CONDA_ENV=$(conda info --base)/envs/r-reticulate</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>          export RETICULATE_PYTHON=$CONDA_ENV/bin/python</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>          export LD_PRELOAD=$CONDA_ENV/lib/libexpat.so.1</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>          export MPLBACKEND=Agg</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>          quarto render</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">shell</span><span class="kw">:</span><span class="at"> bash -l {0}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 </section>
 <section id="문제-3-3.-github-pages에-binder-링크-추가" class="level2">
@@ -6471,20 +6482,21 @@ Number of Fisher Scoring iterations: 3</code></pre>
 <p>GitHub Page를 사용하여 저장소를 웹페이지로 활용하는 부분은 숙제 2에서와 같다.</p>
 <p>웹페이지에서 노트북을 내려받는 대신 <a href="mybinder.org">Binder</a> 서비스를 이용하여 온라인으로 노트북을 실행할 수 있도록 위해 <code>README.md</code> 파일을 로컬 저장소 최상위 디렉토리에 다음과 같이 만들자.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 숙제 3</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>이름: <span class="co">[</span><span class="ot">아무개</span><span class="co">]</span></span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>학번: <span class="co">[</span><span class="ot">나의 학번</span><span class="co">]</span></span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>이 숙제의 상세 분석 결과는 아래 링크에서 확인하실 수 있습니다.</span>
-<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">분석 리포트 (HTML)</span><span class="co">](./hw03.html)</span> </span>
-<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">주피터 노트북 (ipynb)</span><span class="co">]</span>(https://mybinder.org/v2/gh/&lt;유저명&gt;/snu-stat/<span class="dt">&lt;</span><span class="kw">repo명</span><span class="dt">&gt;</span>/gh-pages?filepath=hw03.ipynb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 숙제 3</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>이름: <span class="co">[</span><span class="ot">아무개</span><span class="co">]</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>학번: <span class="co">[</span><span class="ot">나의 학번</span><span class="co">]</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>이 숙제의 상세 분석 결과는 아래 링크에서 확인하실 수 있습니다.</span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">분석 리포트 (HTML)</span><span class="co">](./hw03.html)</span> </span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">주피터 노트북 (ipynb)</span><span class="co">]</span>(https://mybinder.org/v2/gh/&lt;유저명&gt;/snu-stat/<span class="dt">&lt;</span><span class="kw">repo명</span><span class="dt">&gt;</span>/gh-pages?filepath=hw03.ipynb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>여기서 <code>&lt;유저명&gt;</code>은 제출자의 GitHub 유저 아이디이며, <code>&lt;repo명&gt;</code>은 hw3-로 시작하는 제출자의 repository 이름이다.</p>
 <p>작업을 GitHub 원격 저장소로 push한 후 숙제 2 문제 3-3의 3, 4번 과정을 반복하라.</p>
 <section id="답안-7" class="level3">
 <h3 class="anchored" data-anchor-id="답안-7">답안</h3>
+<p>완료. Binder 주소는 https://mybinder.org/v2/gh/snu-stat/hw3-2-hyunjunleee/gh-pages?filepath=hw03.ipynb 이다.</p>
 
 
 </section>
