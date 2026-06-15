@@ -741,6 +741,8 @@ EXPOSE 8888
 
 ### 답안
 
+완료. 이때 ENV PATH=/opt/conda/envs/r-reticulate/bin:${CONDA_DIR}/bin:${PATH} 를 넣고, ENV MPLBACKEND=Agg 를 넣으며, r 설치의 cran 설정을 추가하였다.
+
 ## 문제 3-2. GitHub Actions 워크플로우 수정
 
 숙제 2에서 만들었던 `publish.yml`을 수정하여 기존의 배포 단계 끝에 Docker 컨테이너 이미지를 빌드하고 Github Container Registry (GHCR)에 푸시하는 단계를 추가한다.
@@ -764,6 +766,17 @@ EXPOSE 8888
 ```
 
 ### 답안
+
+완료. 단 이때 render quarto단계를 다음과 같이 수정함
+```{yml}
+        run: |
+          export CONDA_ENV=$(conda info --base)/envs/r-reticulate
+          export RETICULATE_PYTHON=$CONDA_ENV/bin/python
+          export LD_PRELOAD=$CONDA_ENV/lib/libexpat.so.1
+          export MPLBACKEND=Agg
+          quarto render
+        shell: bash -l {0}
+```
 
 ## 문제 3-3. GitHub Pages에 Binder 링크 추가
 
@@ -789,3 +802,4 @@ GitHub Page를 사용하여 저장소를 웹페이지로 활용하는 부분은 
 
 ### 답안
 
+완료. Binder 주소는 https://mybinder.org/v2/gh/snu-stat/hw3-2-hyunjunleee/gh-pages?filepath=hw03.ipynb 이다.

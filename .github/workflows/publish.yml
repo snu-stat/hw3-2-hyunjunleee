@@ -64,6 +64,9 @@ jobs:
           install.packages(c("MASS", "Lahman"))
         shell: Rscript {0}
 
+      - name: Prepare README as Index
+        run: cp README.md index.md
+        
       - name: Render Quarto
         run: |
           export CONDA_ENV=$(conda info --base)/envs/r-reticulate
