@@ -14,3 +14,15 @@
 **늦게 제출된 과제물은 받지 않는다.**
 
 **제출된 HTML파일 기준으로 채점할 예정이니 3번 문제를 완료하지 못하더라도 채점을 위한 HTML 파일을 명시한다.**
+
+
+# 숙제 3
+
+이름: 이현준
+학번: 2021-10411
+
+이 숙제의 상세 분석 결과는 아래 링크에서 확인하실 수 있습니다.
+
+* [분석 리포트 (HTML)](./hw03.html) 
+* [주피터 노트북 (ipynb)](https://mybinder.org/v2/gh/snu-stat/hw3-2-hyunjunleee/gh-pages?filepath=hw03.ipynb
+
