@@ -22,7 +22,11 @@ ENV PATH=${CONDA_DIR}/bin:${PATH}
 
 RUN conda create -n r-reticulate -y -c conda-forge --override-channels \
     python=3.10 \
-    pip
+    pip \
+    jupyter \
+    notebook \
+    jupyterlab \
+    ipykernel
 
 RUN conda install -n r-reticulate -y -c conda-forge --override-channels \
     numpy \
@@ -61,9 +65,16 @@ RUN conda clean -afy
 # 추가로 필요한 패키지 설치
 
 # 5. R 패키지 설치 (reticulate 및 필수 패키지)
-RUN R -e "install.packages(c('reticulate', 'remotes', 'IRkernel', 'NHANES', 'Lahman'))" && \
-    R -e "IRkernel::installspec(user = FALSE)"
+# RUN R -e "install.packages(c('reticulate', 'remotes', 'IRkernel', 'NHANES', 'Lahman'))" && \
+#     R -e "IRkernel::installspec(user = FALSE)"
 # 추가로 필요한 패키지 설치
+RUN which R && R --version
+RUN which jupyter && jupyter --version
+RUN jupyter kernelspec list
+
+RUN R -e "install.packages(c('reticulate', 'remotes', 'IRkernel', 'NHANES', 'Lahman'), repos='https://cloud.r-project.org')"
+
+RUN R -e "IRkernel::installspec(user = FALSE, verbose = TRUE)"
 
 # 6. reticulate가 사용할 Python 경로 고정 (환경 변수)
 ENV RETICULATE_PYTHON=/opt/conda/envs/r-reticulate/bin/python
