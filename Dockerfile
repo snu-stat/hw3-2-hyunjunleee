@@ -80,6 +80,7 @@ RUN R -e "Sys.setenv(PATH=paste('/opt/conda/envs/r-reticulate/bin', Sys.getenv('
 # RUN R -e "IRkernel::installspec(user = FALSE, verbose = TRUE)"
 
 RUN /opt/conda/envs/r-reticulate/bin/jupyter kernelspec list
+ENV PATH=/opt/conda/envs/r-reticulate/bin:${CONDA_DIR}/bin:${PATH}
 
 # 6. reticulate가 사용할 Python 경로 고정 (환경 변수)
 ENV RETICULATE_PYTHON=/opt/conda/envs/r-reticulate/bin/python
