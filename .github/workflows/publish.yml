@@ -61,10 +61,7 @@ jobs:
             "tidyverse", "lubridate", "Lahman", "mosaicData", 
             "babynames", "NHANES", "patchwork", "mdsr", "boot"
           ))
-          install.packages(c(
-            "reticulate", "knitr", "rmarkdown", "remotes",
-            "tidyverse", "MASS", "NHANES", "Lahman", "boot"
-          ))
+          install.packages(c("MASS", "Lahman"))
         shell: Rscript {0}
 
       - name: Render Quarto
